@@ -20,12 +20,16 @@ beforeEach(() => {
 it('should login with valid credentials', () => {
     cy.visit('https://cms-growintravel.mijurnal.com/login');
 
-    //login
-    cy.get(':nth-child(1) > [name="email"]').click()
-    cy.get(':nth-child(1) > [name="email"]').type('admin123@gmail.com')
-    cy.get(':nth-child(2) > .password-input > [name="password"]').click()
-    cy.get(':nth-child(2) > .password-input > [name="password"]').type('Admin@123')
-    cy.get('#login-form > .auth-button').click()
-    cy.get('.swal2-confirm').click()
+    //register
+    cy.get(':nth-child(6) > .switch-form-link').click()
+    cy.get('[name="name"]').click()
+    cy.get('[name="name"]').type('eldara')
+    cy.get(':nth-child(3) > [name="email"]').click()
+    cy.get(':nth-child(3) > [name="email"]').type('elda1@gmal.com')
+    cy.get(':nth-child(4) > .password-input > [name="password"]').click()
+    cy.get(':nth-child(4) > .password-input > [name="password"]').type('Elda@1234567')
+    cy.get('[name="password_confirmation"]').click()
+    cy.get('[name="password_confirmation"]').type('Elda@1234567')
+    //cy.get('.register-form > .auth-button').click()
     })
     })

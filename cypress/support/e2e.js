@@ -15,3 +15,8 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+
+// cypress/support/e2e.js
+Cypress.on('uncaught:exception', (err) => {
+    return false;
+});

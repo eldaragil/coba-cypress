@@ -20,7 +20,7 @@ beforeEach(() => {
 it('should login with valid credentials', () => {
     cy.visit('http://127.0.0.1:8000/');
     //login
-    cy.get('.border-transparent').click()
+    cy.get('.border-transparent').click() 
     cy.get('[name="email"]').type('ragilalinski@gmail.com');
     cy.get('[name="password"]').type('ragilelda123')
     cy.get('.btn-primary').click()

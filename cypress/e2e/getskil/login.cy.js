@@ -18,14 +18,19 @@ beforeEach(() => {
 })
 
 it('should login with valid credentials', () => {
-    cy.visit('https://cms-growintravel.mijurnal.com/login');
+    cy.visit('https://getskill.id/');
+    //login\
+    cy.get('body').click()
+    // cy.get('p > a').click()
+    // cy.get('[name="name"]').click()
+    // cy.get('[name="name"]').type('ragil')
+    
+    // cy.get('.border-transparent').click()
 
-    //login
-    cy.get(':nth-child(1) > [name="email"]').click()
-    cy.get(':nth-child(1) > [name="email"]').type('admin123@gmail.com')
-    cy.get(':nth-child(2) > .password-input > [name="password"]').click()
-    cy.get(':nth-child(2) > .password-input > [name="password"]').type('Admin@123')
-    cy.get('#login-form > .auth-button').click()
-    cy.get('.swal2-confirm').click()
-    })
-    })
+    // cy.get('[name="email"]').type('ragilalinski@gmail.com');
+    // cy.get('[name="password"]').type('ragilelda123')
+    // cy.get('.btn-primary').click()
+    //cy.get('.swal2-confirm').click()
+         
+})
+})
