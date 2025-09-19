@@ -18,14 +18,8 @@ beforeEach(() => {
 })
 
 it('should login with valid credentials', () => {
-    cy.visit('https://cms-growintravel.mijurnal.com/login');
-
-    //login
-    cy.get(':nth-child(1) > [name="email"]').click()
-    cy.get(':nth-child(1) > [name="email"]').type('admin123@gmail.com')
-    cy.get(':nth-child(2) > .password-input > [name="password"]').click()
-    cy.get(':nth-child(2) > .password-input > [name="password"]').type('Admin@123')
-    cy.get('#login-form > .auth-button').click()
+    cy.login();
+    cy.wait(1000)
     cy.get('.swal2-confirm').click()
 
     //

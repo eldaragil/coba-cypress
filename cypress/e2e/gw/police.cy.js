@@ -18,14 +18,9 @@ beforeEach(() => {
 })
 
 it('should login with valid credentials', () => {
-    cy.visit('https://cms-growintravel.mijurnal.com/login');
-
     //login
-    cy.get(':nth-child(1) > [name="email"]').click()
-    cy.get(':nth-child(1) > [name="email"]').type('admin123@gmail.com')
-    cy.get(':nth-child(2) > .password-input > [name="password"]').click()
-    cy.get(':nth-child(2) > .password-input > [name="password"]').type('Admin@123')
-    cy.get('#login-form > .auth-button').click()
+    cy.login();
+    cy.wait(500)
     cy.get('.swal2-confirm').click()
 
     //police
@@ -84,6 +79,7 @@ it('should login with valid credentials', () => {
     cy.get('#submitButton').click()
     cy.get('.swal2-confirm').click()
     cy.get('#cancelButton').click()
+    //hapus belum bisa
     cy.get(':nth-child(1) > .text-center > .list-unstyled > :nth-child(3) > a > .feather').click()
     cy.get('.swal2-confirm').click()
     cy.get('.swal2-confirm').click()

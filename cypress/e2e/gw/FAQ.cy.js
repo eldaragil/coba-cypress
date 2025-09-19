@@ -18,18 +18,7 @@ beforeEach(() => {
 })
 
 it('should login with valid credentials', () => {
-    // cy.visit('https://cms-growintravel.mijurnal.com/login');
-
     //login
-    // cy.get(':nth-child(1) > [name="email"]').click()
-    // cy.get(':nth-child(1) > [name="email"]').type('admin123@gmail.com')
-    // cy.get(':nth-child(2) > .password-input > [name="password"]').click()
-    // cy.get(':nth-child(2) > .password-input > [name="password"]').type('Admin@123')
-    // cy.get('#login-form > .auth-button').click()
-    // cy.get('.swal2-confirm').click()
-
-   
-    
     cy.login(); // otomatis login pakai env
     cy.get('.swal2-confirm').click()
 
@@ -40,18 +29,15 @@ it('should login with valid credentials', () => {
     cy.get('#searchName').click()
     cy.get('#searchName').type('apa')
     cy.get('#searchName').clear()
-    //
-    cy.get('#province_nameDropdown').click()
-    //tambah
-    cy.get(':nth-child(1) > .dropdown-item').click()
-    cy.get('[name="faq_question"]').click()
-    cy.get('[name="faq_question"]').type('apa')
-    cy.wait(1000)
-    cy.get('[name="faq_answer"]').click()
-    cy.get('[name="faq_answer"]').type('engga tau')
-    cy.get('.card-body > .row > .text-end > .btn').click()
-    cy.get('.swal2-confirm').click()
 
+    //kategori
+    cy.get('#province_nameDropdown').click()
+    cy.get(':nth-child(2) > .dropdown > .dropdown-menu > :nth-child(3) > .dropdown-item').click()
+    cy.get('#province_nameDropdown').click()
+    cy.get(':nth-child(2) > .dropdown > .dropdown-menu > :nth-child(4) > .dropdown-item').click()
+    cy.get('#province_nameDropdown').click()
+    cy.get(':nth-child(2) > .dropdown > .dropdown-menu > :nth-child(2) > .dropdown-item').click()
+   
     //pertanyaan A-Z
     cy.get('#sortFilterDropdown').click()
     cy.get(':nth-child(3) > .dropdown > .dropdown-menu > :nth-child(3) > .dropdown-item').click()
@@ -80,15 +66,37 @@ it('should login with valid credentials', () => {
     cy.get('#sortFilterDropdown').click()
     cy.get(':nth-child(3) > .dropdown > .dropdown-menu > :nth-child(2) > .dropdown-item').click()
 
+     //tambah
+    cy.get('.btn').click()
+    cy.get('#categoryDropdown').click()
+    cy.wait(1000)
+    cy.get(':nth-child(2) > .dropdown-item').click()
+    cy.get('[name="faq_question"]').click()
+    cy.get('[name="faq_question"]').type('apa')
+    cy.wait(1000)
+    cy.get('[name="faq_answer"]').click()
+    cy.get('[name="faq_answer"]').type('engga tau')
+    cy.get('.card-body > .row > .text-end > .btn').click()
+    cy.get('.swal2-confirm').click()
+
     //view
     cy.get(':nth-child(1) > .text-center > .list-unstyled > :nth-child(1) > a > .feather').click()
+    cy.wait(3000)
     cy.get('.btn-close').click()
-    //edit
+
+    //edit tidak bisa save
     cy.get(':nth-child(1) > .text-center > .list-unstyled > :nth-child(2) > a > .feather').click()
+    cy.get('[name="faq_question"]').click()
+    cy.get('[name="faq_question"]').clear()
+    cy.get('[name="faq_question"]').type('coba lagi')
+    cy.get('.card-body > .row > .text-end > .btn').click()
+    cy.get('.swal2-confirm').click()
+    cy.get('#kembali').click()
+
     //hapus
     cy.get(':nth-child(1) > .text-center > .list-unstyled > :nth-child(3) > a > .feather').click()
     cy.get('.swal2-confirm').click()
-
+    cy.get('.swal2-confirm').click()
 
 
     })

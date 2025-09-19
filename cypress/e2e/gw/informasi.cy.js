@@ -18,14 +18,9 @@ beforeEach(() => {
 })
 
 it('should login with valid credentials', () => {
-    cy.visit('https://cms-growintravel.mijurnal.com/login');
-
     //login
-    cy.get(':nth-child(1) > [name="email"]').click()
-    cy.get(':nth-child(1) > [name="email"]').type('admin123@gmail.com')
-    cy.get(':nth-child(2) > .password-input > [name="password"]').click()
-    cy.get(':nth-child(2) > .password-input > [name="password"]').type('Admin@123')
-    cy.get('#login-form > .auth-button').click()
+    cy.login()
+    cy.wait(1000)
     cy.get('.swal2-confirm').click()
 
     //list informasi
@@ -52,7 +47,7 @@ it('should login with valid credentials', () => {
           throw new Error('CKEditor instance not found');
         }
       });
-    cy.get('input[type="file"]').eq(1).selectFile('cypress/fixtures/ppl.png', { force: true })
+    cy.get('input[type="file"]').eq(1).selectFile('cypress/fixtures/hma.jpeg', { force: true })
     //cy.get('input[type="file"]').eq(2).selectFile('cypress/fixtures/gunung.jpg', { force: true })
     cy.get('#submitButton').click()
     cy.get('.swal2-confirm').click()
@@ -100,6 +95,21 @@ it('should login with valid credentials', () => {
     cy.get('[name="information_type_name"]').click()
     cy.get('[name="information_type_name"]').type('cobaa')
     cy.get('.d-flex > .btn').click()
+    cy.get('.swal2-confirm').click()
+    //view
+    cy.get(':nth-child(1) > .text-center > .list-unstyled > :nth-child(1) > a > .feather').click()
+    cy.get('.btn-close').click()
+    //edit
+    cy.get(':nth-child(1) > .text-center > .list-unstyled > :nth-child(2) > a > .feather').click()
+    cy.get('[name="information_type_name"]').click()
+    cy.get('[name="information_type_name"]').clear()
+    cy.get('[name="information_type_name"]').type('lagi oke')
+    cy.get('.d-flex > .btn').click()
+    cy.get('.swal2-confirm').click()
+
+    //hps
+    cy.get(':nth-child(1) > .text-center > .list-unstyled > :nth-child(3) > a > .feather').click()
+    cy.get('.swal2-confirm').click()
     cy.get('.swal2-confirm').click()
 
     })

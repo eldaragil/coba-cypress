@@ -18,14 +18,9 @@ beforeEach(() => {
 })
 
 it('should login with valid credentials', () => {
-    cy.visit('https://cms-growintravel.mijurnal.com/login');
-
     //login
-    cy.get(':nth-child(1) > [name="email"]').click()
-    cy.get(':nth-child(1) > [name="email"]').type('admin123@gmail.com')
-    cy.get(':nth-child(2) > .password-input > [name="password"]').click()
-    cy.get(':nth-child(2) > .password-input > [name="password"]').type('Admin@123')
-    cy.get('#login-form > .auth-button').click()
+    cy.login();
+    cy.wait(1000)
     cy.get('.swal2-confirm').click()
 
     //kupon
@@ -39,8 +34,7 @@ it('should login with valid credentials', () => {
     cy.get(':nth-child(4) > .form-check').click()
     cy.get('[name="discount_nominal"]').click()
     cy.get('[name="discount_nominal"]').type('50000')
-    cy.get('input[type="file"]', { timeout: 10000 })
-    .selectFile('cypress/fixtures/ppl.png', { force: true });
+    cy.get('input[type="file"]').eq(0).selectFile('cypress/fixtures/hma.jpeg', { force: true })
     cy.get('.card-body > .text-end > .btn').click()
     cy.get('.swal2-confirm').click()
     cy.get('#kembali').click()

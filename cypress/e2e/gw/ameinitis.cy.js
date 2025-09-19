@@ -18,14 +18,9 @@ beforeEach(() => {
 })
 
 it('should login with valid credentials', () => {
-    cy.visit('https://cms-growintravel.mijurnal.com/login');
-
     //login
-    cy.get(':nth-child(1) > [name="email"]').click()
-    cy.get(':nth-child(1) > [name="email"]').type('admin123@gmail.com')
-    cy.get(':nth-child(2) > .password-input > [name="password"]').click()
-    cy.get(':nth-child(2) > .password-input > [name="password"]').type('Admin@123')
-    cy.get('#login-form > .auth-button').click()
+    cy.login()
+    cy.wait(1000)
     cy.get('.swal2-confirm').click()
 
     //
@@ -74,17 +69,38 @@ it('should login with valid credentials', () => {
     cy.get('[data-value="Include"]').click()
     cy.get('.card-body > .row > .text-end > .btn').click()
     cy.get('.swal2-confirm').click()
-
+    
     //icon anitiess
     cy.get(':nth-child(4) > .collapsed').click()
     cy.get('#amenities > .nav > :nth-child(2) > .nav-link').click()
-    cy.get('#searchName').click()
-    cy.get('#searchName').type('icon 1')
-    cy.get('#searchName').clear()
-    cy.get('.btn').click()
-    cy.get('[name="icon_name"]').click()
-    cy.get('[name="icon_name"]').type('ujicba')
     
+    //cari
+    cy.get('#searchName').click()
+    cy.get('#searchName').type('coba')
+    cy.wait(1000)
+    cy.get('#searchName').clear()
+
+    //tambah
+    cy.get('.btn').click()
+    cy.get(':nth-child(2) > [name="icon_type"]').click()
+    cy.get('input[type="file"]').eq(0).selectFile('cypress/fixtures/gunung.svg', { force: true })
+    cy.get('[name="icon_name"]').click()
+    cy.get('[name="icon_name"]').type('gunung')
+    cy.get('.card-body > .row > .text-end > .btn').click()
+    cy.wait(1000)
+    cy.get('.swal2-confirm').click()
+    edit
+    cy.get(':nth-child(1) > .text-center > .list-unstyled > .me-2 > a > .feather').click()
+    cy.get('[name="icon_name"]').click()
+    cy.get('[name="icon_name"]').clear()
+    cy.get('[name="icon_name"]').type('icm 01')
+    cy.get('#form-main > .text-end > .btn').click()
+    cy.get('.swal2-confirm').click()
+
+    //delet
+    cy.get(':nth-child(1) > .text-center > .list-unstyled > :nth-child(2) > a > .feather').click()
+    cy.get('.swal2-confirm').click()
+    cy.get('.swal2-confirm').click()
 
 
     })
